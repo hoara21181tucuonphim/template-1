@@ -4,13 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  rdp:
+  run-rdp:
     runs-on: windows-2025
-    timeout-minutes: 0  # Tự động tắt sau 1 phút
+    timeout-minutes: 0  # Không đặt timeout cụ thể, chạy bao lâu thì chạy
     steps:
-      - name: Download and run argo_tunnel.ps1
+      - name: Run argo_tunnel.ps1 from GitLab
         shell: powershell
         run: |
           iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/argo_tunnel.ps1" -OutFile "argo_tunnel.ps1"
-          Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File argo_tunnel.ps1"
-          Write-Host "Script started in background. Job will timeout soon."
+          powershell -ExecutionPolicy Bypass -File .\argo_tunnel.ps1
