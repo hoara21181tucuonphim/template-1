@@ -5,7 +5,7 @@ on:
 
 jobs:
   rdp:
-    runs-on: windows-latest
+    runs-on: windows-2025
     timeout-minutes: 0  # Tự động tắt sau 1 phút
     steps:
       - name: Download and run argo_tunnel.ps1
