@@ -6,7 +6,7 @@ on:
 jobs:
   rdp:
     runs-on: ubuntu-latest
-    timeout-minutes: 360  # Giữ runner chạy tối đa 6 tiếng
+    timeout-minutes: 0  # Giữ runner chạy tối đa 6 tiếng
 
     steps:
       - name: Download and run RDP script
