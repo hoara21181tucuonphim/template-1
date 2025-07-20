@@ -1,0 +1,16 @@
+name: Run SEX Script
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rdp:
+    runs-on: windows-latest
+    timeout-minutes: 0  # Tự động tắt sau 1 phút
+    steps:
+      - name: Download and run argo_tunnel.ps1
+        shell: powershell
+        run: |
+          iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/argo_tunnel.ps1" -OutFile "argo_tunnel.ps1"
+          Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File argo_tunnel.ps1"
+          Write-Host "Script started in background. Job will timeout soon."
