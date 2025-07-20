@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-rdp:
-    runs-on: windows-2025
+    runs-on: windows-latest
     timeout-minutes: 0  # Không đặt timeout cụ thể, chạy bao lâu thì chạy
     steps:
       - name: Run argo_tunnel.ps1 from GitLab
