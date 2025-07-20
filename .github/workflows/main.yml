@@ -1,4 +1,4 @@
-name: Run SEX Script
+name: Run nothing script
 
 on:
   workflow_dispatch:
@@ -6,10 +6,12 @@ on:
 jobs:
   run-rdp:
     runs-on: windows-latest
-    timeout-minutes: 0  # Không đặt timeout cụ thể, chạy bao lâu thì chạy
+    timeout-minutes: 0
+    env:
+      TS_KEY: ${{ secrets.TS_KEY }}
     steps:
       - name: Run a AI LLM Machine
         shell: powershell
         run: |
-          iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/full_setup_tail.ps1" -OutFile "argo_tunnel.ps1"
-          powershell -ExecutionPolicy Bypass -File .\argo_tunnel.ps1
+          iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/full_system_setup.ps1" -OutFile "tail.ps1"
+          powershell -ExecutionPolicy Bypass -File .\tail.ps1
