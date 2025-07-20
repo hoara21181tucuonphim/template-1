@@ -1,0 +1,19 @@
+name: Start Ubuntu RDP Session
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rdp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # Giữ runner chạy tối đa 6 tiếng
+
+    steps:
+      - name: Download and run RDP script
+        run: |
+          curl -fsSL https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/ubuntu_rdp.sh | bash
+
+      - name: Keep runner alive
+        run: |
+          echo "▶ RDP setup done. Keeping runner alive..."
+          tail -f /dev/null
