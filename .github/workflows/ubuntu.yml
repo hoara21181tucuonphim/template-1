@@ -6,14 +6,14 @@ on:
 jobs:
   rdp:
     runs-on: ubuntu-latest
-    timeout-minutes: 0  # Giữ runner chạy tối đa 6 tiếng
+    timeout-minutes: 0  # Tối đa GitHub cho phép (6 tiếng)
 
     steps:
-      - name: Download and run RDP script
+      - name: Download RDP script and fix line endings
         run: |
-          curl -fsSL https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/ubuntu_rdp.sh | bash
+          curl -fsSL https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/ubuntu_rdp.sh -o rdp.sh
+          sudo sed -i 's/\r$//' rdp.sh
+          bash rdp.sh
 
       - name: Keep runner alive
-        run: |
-          echo "▶ RDP setup done. Keeping runner alive..."
-          tail -f /dev/null
+        run: tail -f /dev/null
