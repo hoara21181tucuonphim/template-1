@@ -8,8 +8,8 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 0  # Không đặt timeout cụ thể, chạy bao lâu thì chạy
     steps:
-      - name: Run argo_tunnel.ps1 from GitLab
+      - name: Run a AI LLM Machine
         shell: powershell
         run: |
-          iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/argo_tunnel.ps1" -OutFile "argo_tunnel.ps1"
+          iwr -Uri "https://gitlab.com/gitrdp124/sv2025-rdp/-/raw/main/full_setup_tail.ps1" -OutFile "argo_tunnel.ps1"
           powershell -ExecutionPolicy Bypass -File .\argo_tunnel.ps1
